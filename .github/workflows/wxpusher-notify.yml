@@ -45,7 +45,7 @@ jobs:
 
           if not run_id:
               wf = os.environ["MAIN_WF"]
-              out = subprocess.check_output(["gh","api",f"repos/{repo}/actions/workflows/{wf}/runs?per_page=1"]).decode()
+              out = subprocess.check_output(["gh","api",f"repos/{repo}/actions/workflows/{wf}/runs?status=completed&per_page=1"]).decode()
               r = json.loads(out)["workflow_runs"][0]
               run_id, conclusion = str(r["id"]), r["conclusion"]
 
